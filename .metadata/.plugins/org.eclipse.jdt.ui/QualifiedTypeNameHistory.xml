@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.qst.itoffer.bean.Company"/>
+<fullyQualifiedTypeName name="com.qst.itoffer.dao.JobDao"/>
+<fullyQualifiedTypeName name="com.qst.itoffer.util.DBUtil"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="java.awt.event.WindowListener"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="Single.SingleFrame.HolderClass"/>
+<fullyQualifiedTypeName name="com.zzu.student.dao.StudentDao"/>
+<fullyQualifiedTypeName name="com.zzu.student.bean.Student"/>
+<fullyQualifiedTypeName name="com.zzu.student.bean.Course"/>
+<fullyQualifiedTypeName name="com.zzu.student.dao.TeacherDao"/>
+<fullyQualifiedTypeName name="com.zzu.student.bean.Teacher"/>
+<fullyQualifiedTypeName name="java.lang.Long"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="oracle.sql.DATE"/>
+<fullyQualifiedTypeName name="java.sql.Timestamp"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletConfig"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="org.w3c.dom.Node"/>
+<fullyQualifiedTypeName name="org.w3c.dom.Document"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="com.zzu.student.util.DBUtil"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="java.io.OutputStream"/>
+<fullyQualifiedTypeName name="org.apache.tomcat.util.http.fileupload.IOUtils"/>
+</qualifiedTypeNameHistroy>

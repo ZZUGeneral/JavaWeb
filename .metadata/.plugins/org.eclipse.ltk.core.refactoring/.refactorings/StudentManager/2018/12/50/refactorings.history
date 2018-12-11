@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.zzu.student.servlet.AddStudentServlet&apos; to &apos;AddStudentOrTeacherServlet&apos;&#x0D;&#x0A;- Original project: &apos;StudentManager&apos;&#x0D;&#x0A;- Original element: &apos;com.zzu.student.servlet.AddStudentServlet&apos;&#x0D;&#x0A;- Renamed element: &apos;com.zzu.student.servlet.AddStudentOrTeacherServlet&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;AddStudentServlet&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.zzu.student.servlet{AddStudentServlet.java[AddStudentServlet" matchStrategy="1" name="AddStudentOrTeacherServlet" qualified="false" references="true" similarDeclarations="false" stamp="1544454338791" textual="false" version="1.0"/>
+</session>

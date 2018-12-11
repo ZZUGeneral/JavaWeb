@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//src/AbstractFactory/SpringButton.java=UTF-8
+encoding//src/AbstractFactory/SpringComboBox.java=UTF-8
+encoding//src/AbstractFactory/SpringTextField.java=UTF-8
+encoding//src/AbstractFactory/SummerButton.java=UTF-8
+encoding//src/AbstractFactory/SummerComboBox.java=UTF-8
+encoding//src/Bridge/LinuxImageImpl.java=UTF-8
+encoding//src/Factory/GitReader.java=UTF-8
+encoding//src/Factory/JpgReader.java=UTF-8
+encoding//src/Factory/XMLUtil.java=UTF-8
+encoding//src/finalBridge/LinuxWenBenReader.java=UTF-8
+encoding//src/simpleFactory/Factory.java=UTF-8
+encoding//src/simpleFactory/XMLUtil.java=UTF-8
