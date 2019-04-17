@@ -165,7 +165,7 @@
 						</ul></li>
 				</c:if>
 				<c:if test="${identity=='admin' }">
-					<li><a href="#formsub" class="editor">信息管理</a> <span
+					<li><a href="#formsub" class="editor">学生管理</a> <span
 						class="arrow"></span>
 						<ul id="formsub">
 							<li><a

@@ -266,6 +266,8 @@ public class StudentDao {
 		String second_no = stu.substring(9, 11);
 		int class_no = Integer.parseInt(first_No);
 		int student_no = Integer.parseInt(second_no);
+		if (class_no == 0)
+			class_no = 1;
 		if (student_no > 30) {
 			class_no++;
 			student_no = 1;
@@ -281,7 +283,7 @@ public class StudentDao {
 		if (student_no < 10) {
 			tem_stu_no = "0" + Integer.toString(student_no);
 		} else {
-			tem_stu_no = Integer.toString(student_no);
+			tem_stu_no = tem_stu_no + Integer.toString(student_no);
 		}
 		String year = stu.substring(0, 3);
 		int cur_yyyy = Integer.parseInt(year);
@@ -330,24 +332,23 @@ public class StudentDao {
 		// TODO Auto-generated method stub
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
-		String sql = "select * from student where student_no = ?";
+		String sql = "select * from student where stu_no = ?";
 		ResultSet rs = null;
+		boolean sure = false;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setLong(1, m.getNo());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				if (rs.getString("name") != m.getName())
-					return false;
-				if (rs.getString("gender") != m.getGender())
-					return false;
-				if (rs.getString("email") != m.getEmail())
-					return false;
-				if (rs.getTimestamp("birthday") != new Timestamp(m.getBirthday().getTime()))
-					return false;
-				if (rs.getString("dept") != m.getDept())
-					return false;
-				return true;
+				sure = true;
+				if (!rs.getString("stu_name").equals(m.getName()))
+					sure = false;
+				if (!rs.getString("gender").equals(m.getGender()))
+					sure = false;
+				if (!rs.getString("email").equals(m.getEmail()))
+					sure = false;
+				if (!rs.getString("dept").equals(m.getDept()))
+					sure = false;
 			}
 
 		} catch (SQLException e) {
@@ -357,7 +358,7 @@ public class StudentDao {
 			DBUtil.closeJDBC(null, pstmt, conn);
 		}
 
-		return false;
+		return sure;
 	}
 
 }

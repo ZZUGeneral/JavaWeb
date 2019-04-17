@@ -61,21 +61,11 @@ public class FindPasswordServlet extends HttpServlet {
 		DeptDao deptDao = new DeptDao();
 		int dept_no = Integer.parseInt(dept);
 		dept = deptDao.getDeptNameByNo(dept_no);
-		String birthday = request.getParameter("birthday");
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		Date s = null;
-		try {
-			s = format.parse(birthday);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		long No = Long.parseLong(no);
 		MyselfBean m = new MyselfBean();
 		m.setNo(No);
-		m.setBirthday(s);
 		m.setDept(dept);
 		m.setEmail(email);
 		m.setGender(gender);
@@ -90,6 +80,7 @@ public class FindPasswordServlet extends HttpServlet {
 		} else if (!no.equals("admin")) {
 			StudentDao dao = new StudentDao();
 			if (dao.getSure(m)) {
+				System.out.println(password);
 				result = dao.updatePassword(No, password);
 			}
 		} else {
@@ -107,7 +98,7 @@ public class FindPasswordServlet extends HttpServlet {
 		} else {
 			out.print("<script type='text/javascript'>");
 			out.print("alert('修改失败！');");
-			out.print("window.location='password.jsp';");
+			out.print("window.location='findpsd.jsp';");
 			out.print("</script>");
 		}
 	}

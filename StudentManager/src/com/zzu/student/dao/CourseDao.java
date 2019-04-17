@@ -178,10 +178,11 @@ public class CourseDao {
 		return result;
 	}
 
-	public boolean addCourse(long teacher_no, int course_no, String course_name, float credit, int type) {
+	public boolean addCourse(long teacher_no, String course_name, float credit, int type) {
 		// TODO Auto-generated method stub
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
+		int course_no = getCourseNo();
 		String sql = "insert into course values(?,?,?,?,?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -206,6 +207,26 @@ public class CourseDao {
 		} finally {
 			DBUtil.closeJDBC(null, pstmt, conn);
 		}
+	}
+
+	public int getCourseNo() {
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int course_no = 0;
+		String sql = "select max(course_no) from course";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next())
+				course_no = rs.getInt(1)+1;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return course_no;
 	}
 
 	public boolean delete(int course_no) {

@@ -61,7 +61,8 @@
                 <a class="count" href="ajax/notifications.html"><span>9</span></a>
         	</div>-->
 				<div class="userinfo">
-					<img src="/StudentManager/images/thumbs/avatar.png" alt="" /> <span>管理员</span>
+					<img src="/StudentManager/images/thumbs/avatar.png" alt="" /> <span><c:out
+							value="${identity }"></c:out></span>
 				</div>
 				<!--userinfo-->
 

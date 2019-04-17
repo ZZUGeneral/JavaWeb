@@ -278,13 +278,11 @@ public class TeacherDao {
 			pstmt.setLong(1, m.getNo());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				if (rs.getString("name") != m.getName())
+				if (rs.getString("teacher_name") != m.getName())
 					return false;
 				if (rs.getString("gender") != m.getGender())
 					return false;
 				if (rs.getString("email") != m.getEmail())
-					return false;
-				if (rs.getTimestamp("birthday") != new Timestamp(m.getBirthday().getTime()))
 					return false;
 				if (rs.getString("dept") != m.getDept())
 					return false;

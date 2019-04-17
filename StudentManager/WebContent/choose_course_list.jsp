@@ -69,7 +69,8 @@ $(function(){
                 <a class="count" href="ajax/notifications.html"><span>9</span></a>
         	</div>-->
 				<div class="userinfo">
-					<img src="/StudentManager/images/thumbs/avatar.png" alt="" /> <span><c:out value="${identity }"></c:out></span>
+					<img src="/StudentManager/images/thumbs/avatar.png" alt="" /> <span><c:out
+							value="${identity }"></c:out></span>
 				</div>
 				<!--userinfo-->
 
@@ -108,7 +109,7 @@ $(function(){
 
 		<div class="header">
 			<ul class="headermenu">
-					<c:if test="${identity=='student' }">
+				<c:if test="${identity=='student' }">
 					<li class="current"><a href="student.jsp"><span
 							class="icon icon-flatscreen"></span>学生</a></li>
 				</c:if>
@@ -137,7 +138,7 @@ $(function(){
 		<!--header-->
 
 		<div class="vernav2 iconmenu">
-		<ul>
+			<ul>
 				<c:if test="${identity=='student' }">
 					<li><a href="#formsub" class="editor">学生信息</a> <span
 						class="arrow"></span>
@@ -164,7 +165,7 @@ $(function(){
 						</ul></li>
 				</c:if>
 				<c:if test="${identity=='admin' }">
-					<li><a href="#formsub" class="editor">信息管理</a> <span
+					<li><a href="#formsub" class="editor">学生管理</a> <span
 						class="arrow"></span>
 						<ul id="formsub">
 							<li><a
@@ -196,7 +197,7 @@ $(function(){
 			</div>
 			<!--pageheader-->
 			<div id="contentwrapper" class="contentwrapper">
-				<form action="/StudentManager/SearchServlet?location=course"
+				<form action="/StudentManager/SearchServlet?location=choose"
 					method="post">
 					<input style="width: 30%;" type="text" name="keyword" id="keyword" />
 					<button type="submit">搜索</button>
@@ -250,17 +251,16 @@ $(function(){
 										<td class="center"><c:out value="${cb.teacher_name }"></c:out></td>
 										<td class="center">
 											<ul class="buttonlist">
-												<c:if test="${identity == 'admin' }"><li><a
+												<c:if test="${identity == 'admin' }">
+													<li><a
 														href="/StudentManager/DeleteCourseServlet?courseNo=${cb.course_no }"
-														class="btn btn_book"><span>删除</span></a>
-													</li>
+														class="btn btn_book"><span>删除</span></a></li>
 												</c:if>
 												<c:if test="${identity != 'admin' }">
-												<li><a
+													<li><a
 														href="/StudentManager/CourseChooseServlet?courseNo=${cb.course_no }"
-														class="btn btn_book"><span>选择</span></a>
-													</li>
-													</c:if>
+														class="btn btn_book"><span>选择</span></a></li>
+												</c:if>
 											</ul>
 										</td>
 									</tr>

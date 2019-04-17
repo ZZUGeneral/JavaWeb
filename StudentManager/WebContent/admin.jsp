@@ -132,7 +132,7 @@
 
 		<div class="vernav2 iconmenu">
 			<ul>
-				<li><a href="#formsub" class="editor">信息管理</a> <span
+				<li><a href="#formsub" class="editor">学生管理</a> <span
 					class="arrow"></span>
 					<ul id="formsub">
 						<li><a
@@ -158,8 +158,8 @@
 		<div class="centercontent">
 
 			<div class="pageheader">
-				<h1 class="pagetitle">欢迎登陆学生信息管理页面</h1>
-				<span class="pagedesc">This is for Student!</span>
+				<h1 class="pagetitle">欢迎登陆管理员信息管理页面</h1>
+				<span class="pagedesc">This is for Admin!</span>
 			</div>
 			<!--pageheader-->
 

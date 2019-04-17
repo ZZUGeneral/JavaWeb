@@ -174,7 +174,7 @@ $(function(){
 						</ul></li>
 				</c:if>
 				<c:if test="${identity=='admin' }">
-					<li><a href="#formsub" class="editor">信息管理</a> <span
+					<li><a href="#formsub" class="editor">学生管理</a> <span
 						class="arrow"></span>
 						<ul id="formsub">
 							<li><a
@@ -206,7 +206,7 @@ $(function(){
 			</div>
 			<!--pageheader-->
 			<div id="contentwrapper" class="contentwrapper">
-				<form action="/StudentManager/SearchServlet?location=score"
+				<form action="/StudentManager/SearchServlet?location=getscore"
 					method="post">
 					<input style="width: 30%;" type="text" name="keyword" id="keyword" />
 					<button type="submit">搜索</button>

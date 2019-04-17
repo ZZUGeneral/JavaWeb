@@ -109,12 +109,15 @@
 
 		<div class="header">
 			<ul class="headermenu">
-				<c:if test="${identity!='teacher' }">
+				<c:if test="${identity=='student' }">
 					<li class="current"><a href="student.jsp"><span
 							class="icon icon-flatscreen"></span>学生</a></li>
 				</c:if>
-				<c:if test="${identity!='student' }">
-					<li><a href="teacher.html"><span class="icon icon-pencil"></span>教师</a></li>
+				<c:if test="${identity=='teacher' }">
+					<li><a href="teacehr.jsp"><span class="icon icon-pencil"></span>教师</a></li>
+				</c:if>
+				<c:if test="${identity=='admin' }">
+					<li><a href="admin.jsp"><span class="icon icon-pencil"></span>管理员</a></li>
 				</c:if>
 			</ul>
 
@@ -171,12 +174,6 @@
 							<p>
 								<label>Email</label> <span class="field"><input
 									type="text" id="email" name="email" class="longinput" /></span>
-							</p>
-
-							<p>
-								<label>生日</label> <span class="field"> <input
-									id="birthday" name="birthday" type="date" class="width100" />
-								</span>
 							</p>
 							<p>
 								<label>院系</label> <span class="field"> <select

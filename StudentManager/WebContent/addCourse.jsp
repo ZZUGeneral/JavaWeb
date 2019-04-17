@@ -99,7 +99,7 @@
 
 		<div class="header">
 			<ul class="headermenu">
-					<c:if test="${identity=='student' }">
+				<c:if test="${identity=='student' }">
 					<li class="current"><a href="student.jsp"><span
 							class="icon icon-flatscreen"></span>学生</a></li>
 				</c:if>
@@ -155,7 +155,7 @@
 						</ul></li>
 				</c:if>
 				<c:if test="${identity=='admin' }">
-					<li><a href="#formsub" class="editor">信息管理</a> <span
+					<li><a href="#formsub" class="editor">学生管理</a> <span
 						class="arrow"></span>
 						<ul id="formsub">
 							<li><a
@@ -195,17 +195,13 @@
 					<form id="form1" class="stdform" method="post"
 						action="/StudentManager/AddCourseServlet">
 						<p>
-							<label>编号</label> <span class="field"><input type="text"
-								name="course_no" id="course_no" class="longinput" /></span>
-						</p>
-						<p>
 							<label>名称</label> <span class="field"><input type="text"
 								name="course_name" id="course_name" class="longinput" /></span>
 						</p>
 
 						<p>
 							<label>学分</label> <span class="field"><input type="text"
-								name="credit" id="" credit"" class="longinput" /></span>
+								name="credit" id="credit" class="longinput" /></span>
 						</p>
 
 						<p>

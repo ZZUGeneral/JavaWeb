@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;CompanyViewCountListener.java&apos; to &apos;School/src/com.zzu.student.listener&apos;&#x0D;&#x0A;- Original project: &apos;QST_ITOFFER&apos;&#x0D;&#x0A;- Destination element: &apos;School/src/com.zzu.student.listener&apos;&#x0D;&#x0A;- Original element: &apos;com.qst.itoffer.listener.CompanyViewCountListener.java&apos;" description="Copy compilation unit" destination="=School/src&lt;com.zzu.student.listener" element1="/src&lt;com.qst.itoffer.listener{CompanyViewCountListener.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1542207907235" units="1" version="1.0"/>
-</session>

@@ -21,7 +21,7 @@ public class ScoreBeanDao {
 				+ "ROWNUM rn from (select s.stu_no,s.stu_name,c.course_name,sc.score,c.course_no from ("
 				+ "select course_no,course_name from course where course_no in (select course_no"
 				+ " from course where teacher_no = ?)) c left join sc on c.course_no = sc.course_no"
-				+ " left join (select stu_no,stu_name from student) s on s.stu_no = sc.stu_no) a "
+				+ " left join (select stu_no,stu_name from student) s on s.stu_no = sc.stu_no order by c.course_no,s.stu_no) a "
 				+ "where ROWNUM<=?) ssc where rn>?";
 		try {
 			pstmt = conn.prepareStatement(sql);

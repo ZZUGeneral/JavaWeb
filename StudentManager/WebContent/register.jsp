@@ -72,7 +72,8 @@
                 <a class="count" href="ajax/notifications.html"><span>9</span></a>
         	</div>-->
 				<div class="userinfo">
-					<img src="/StudentManager/images/thumbs/avatar.png" alt="" /> <span>管理员</span>
+					<img src="/StudentManager/images/thumbs/avatar.png" alt="" /> <span><c:out
+							value="${identity }"></c:out></span>
 				</div>
 				<!--userinfo-->
 
@@ -167,7 +168,7 @@
 						</ul></li>
 				</c:if>
 				<c:if test="${identity=='admin' }">
-					<li><a href="#formsub" class="editor">信息管理</a> <span
+					<li><a href="#formsub" class="editor">学生管理</a> <span
 						class="arrow"></span>
 						<ul id="formsub">
 							<li><a
@@ -233,10 +234,10 @@
 							<label>院系</label> <span class="field"> <select name="dept"
 								id="dept">
 									<option value="">请选择:</option>
-									<option value="1">外语学院</option>
+									<option value="123">外语学院</option>
 									<option value="243">信息工程学院</option>
-									<option value="3">医学院</option>
-									<option value="4">历史学院</option>
+									<option value="343">医学院</option>
+									<option value="423">历史学院</option>
 							</select>
 							</span>
 						</p>

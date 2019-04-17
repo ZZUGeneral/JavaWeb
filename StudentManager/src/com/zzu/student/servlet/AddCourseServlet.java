@@ -47,15 +47,13 @@ public class AddCourseServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		long teacher_no = (long) request.getSession().getAttribute("SESSION_NO");
-		String no = request.getParameter("course_no");
-		int course_no = Integer.parseInt(no);
 		String course_name = request.getParameter("course_name");
 		String credit1 = request.getParameter("credit");
 		float credit = Float.parseFloat(credit1);
 		String type1 = request.getParameter("type");
 		int type = Integer.parseInt(type1);
 		CourseDao dao = new CourseDao();
-		boolean insert = dao.addCourse(teacher_no,course_no,course_name,credit,type);
+		boolean insert = dao.addCourse(teacher_no, course_name, credit, type);
 		PrintWriter out = response.getWriter();
 		if (insert) {
 			out.print("<script type='text/javascript'>");
@@ -68,7 +66,7 @@ public class AddCourseServlet extends HttpServlet {
 			out.print("window.location='addCourse.jsp';");
 			out.print("</script>");
 		}
-		
+
 	}
 
 }

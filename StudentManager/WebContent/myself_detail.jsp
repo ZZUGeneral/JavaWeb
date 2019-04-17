@@ -61,7 +61,8 @@
                 <a class="count" href="ajax/notifications.html"><span>9</span></a>
         	</div>-->
 				<div class="userinfo">
-					<img src="/StudentManager/images/thumbs/avatar.png" alt="" /> <span>管理员</span>
+					<img src="/StudentManager/images/thumbs/avatar.png" alt="" /> <span><c:out
+							value="${identity }"></c:out></span>
 				</div>
 				<!--userinfo-->
 
@@ -156,7 +157,7 @@
 						</ul></li>
 				</c:if>
 				<c:if test="${identity=='admin' }">
-					<li><a href="#formsub" class="editor">信息管理</a> <span
+					<li><a href="#formsub" class="editor">学生管理</a> <span
 						class="arrow"></span>
 						<ul id="formsub">
 							<li><a
