@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class Follow {
@@ -43,56 +44,80 @@ public class Follow {
 		}
 	}
 
-	public Set<String> getFollow(String str) {
-		Set<String> follow = new HashSet<String>();
-		HashMap<String, String> map = product.getMap();
+	public Map<String, Set<String>> createFollow() {
+		HashMap<String, String> productMap = product.getMap();
 		List<String> endList = endCode.getCodeList();
 		List<String> notEndList = notEndCode.getCodeList();
-		Map<String, Set<String>> firstMap = new First().first();
-		int size = -1;
-		while (follow.size() / size != 1) {
-			if (follow.size() == 0)
-				size = -1;
-			else
-				size = follow.size();
-			if (beginCode.getCodeList().contains(str))
-				follow.add("#");
-			if (map.containsKey(str)) {
-				String[] vStr = map.get(str).split("\\|");
-				for (String s : vStr) {
-					int len = s.length();
-					if (len > 3 && notEndList.contains(s.substring(len - 2, len - 1))) {
-						Set<String> first = firstMap.get(s.substring(len - 1));
-						for (String set : first) {
-							if (!set.equals("$"))
-								follow.add(set);
+		List<String> beginList = beginCode.getCodeList();
+		Map<String, Set<String>> firstMap = new First().getFirst();
+		Map<String, Set<String>> followMap = new HashMap<String, Set<String>>();
+		for (String str : notEndList) {
+			Set<String> set = new HashSet<String>();
+			if(beginList.contains(str)) set.add("#");
+			followMap.put(str, set);
+		}
+		boolean changed = true;
+		while (changed) {
+			changed = false;
+			for (Map.Entry<String, String> map : productMap.entrySet()) {
+				for (String str : map.getValue().split("\\|")) {
+					int len = str.length();
+					if (len >= 3 && notEndList.contains(str.substring(len - 2, len - 1))) {
+						Set<String> first = firstMap.get(str.substring(len - 1));
+						Set<String> set = followMap.get(str.substring(len - 2, len - 1));
+						for (String f : first) {
+							if (!set.contains(f) && !f.equals("$")) {
+								set.add(f);
+								changed = true;
+							}
+							followMap.put(str.substring(len - 2, len - 1), set);
+							if (first.contains("$")) {
+								for (String fs : followMap.get(map.getKey())) {
+									if (!set.contains(fs)) {
+										set.add(fs);
+										changed = true;
+									}
+								}
+							}
+							followMap.put(str.substring(len - 2, len - 1), set);
 						}
-						if (first.contains("$")) {
-							Set<String> fset = getFollow(s.substring(len - 2, len - 1));
-							for (String fs : fset)
-								follow.add(fs);
+
+					}
+					if (len == 2 && notEndList.contains(str.substring(len - 1))) {
+						Set<String> fset = followMap.get(str.substring(len - 1));
+						for (String fs : followMap.get(map.getKey())) {
+							if (!fset.contains(fs)) {
+								fset.add(fs);
+								changed = true;
+							}
+
 						}
+						followMap.put(str.substring(len - 1), fset);
 					}
-					if (len > 2 && notEndList.contains(s.substring(len - 1))) {
-						Set<String> fset = getFollow(s.substring(len - 1));
-						for (String fs : fset)
-							follow.add(fs);
-					}
+
 				}
 
 			}
-
 		}
-		return follow;
+		return followMap;
 	}
 
-	public static void main(String[] args) {
-
+	public Map<String, Set<String>> getFollow() {
 		Follow follow = new Follow();
 		follow.getData();
-		Set<String> returnSet = follow.getFollow("E'");
-		for (String s : returnSet) {
-			System.out.println(s);
+		Map<String, Set<String>> followMap = follow.createFollow();
+		return followMap;
+	}
+
+	public void printFollow() {
+		Follow follow = new Follow();
+		Map<String, Set<String>> followMap = follow.getFollow();
+		for (Map.Entry<String, Set<String>> entry : followMap.entrySet()) {
+			System.out.println("Follow(" + entry.getKey() + ")=" + entry.getValue());
 		}
+	}
+	public static void main(String[] args) {
+		new First().printFirst();
+		new Follow().printFollow();
 	}
 }
