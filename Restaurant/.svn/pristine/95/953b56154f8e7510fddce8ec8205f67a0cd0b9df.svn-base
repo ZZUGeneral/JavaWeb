@@ -1,0 +1,16 @@
+package zzu.minjie.dao;
+
+import java.util.List;
+
+import zzu.minjie.bean.Food;
+
+public class OrderDao {
+	public List<Food> getFoodList(String orderId){
+		
+		
+		
+		return null;
+		
+	}
+
+}

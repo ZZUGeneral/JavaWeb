@@ -1,0 +1,104 @@
+package zzu.minjie.bean;
+
+import java.util.Date;
+import zzu.minjie.dao.UserDao;
+
+public class User {
+	private String userId;
+	private String name;  
+	private String  address;
+	private String phone;
+	private int    type;  
+	private String  gender; 
+	private Date birthday;
+	private String password;
+	private String nick;
+	private String updateResult;
+	
+	public User() {
+		
+	}
+	public User(String username, String name, String address, String phone, String gender,
+			Date birthdayDate, String nick) {
+		this.userId = username;
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+		this.gender = gender;
+		this.birthday = birthdayDate;
+		this.nick = nick;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public Date getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+	
+	public void setInfoUpdate(User user){
+		// 更新简历基本信息
+		try{
+			UserDao userDao = new UserDao();
+			userDao.update(user);
+		}catch(Exception e){
+			updateResult="更新失败！";
+		}
+		    updateResult="更新成功！";
+	}
+	
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", name=" + name + ", address=" + address + ", phone=" + phone + ", type="
+				+ type + ", gender=" + gender + ", birthday=" + birthday + ", password=" + password + ", nick=" + nick
+				+ "]";
+	}
+	
+}

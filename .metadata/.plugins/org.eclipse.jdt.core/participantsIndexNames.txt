@@ -1,4 +1,6 @@
 INDEX VERSION 1.131
+F:\JavaWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2307754291.index
+\yhl.Myatis\src\main\resources
 F:\JavaWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3669072154.index
 \RestoRegister\src
 F:\JavaWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4042844430.index

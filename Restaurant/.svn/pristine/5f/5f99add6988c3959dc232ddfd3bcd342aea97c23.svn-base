@@ -1,0 +1,38 @@
+package zzu.minjie.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import zzu.minjie.bean.Food;
+import zzu.minjie.util.DBUTil;
+
+public class OrderDao {
+	public List<Food> getFoodList(String orderId) {
+		Connection conn = DBUTil.getConn();
+		String sql = "select * from food where FoodId in (select foodId from orders where orderNo = ?)";
+		ResultSet rs = null;
+		List<Food> fl = new ArrayList<Food>();
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, orderId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				Food food = new Food();
+				food.setName(rs.getString("name"));
+				
+				fl.add(food);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return fl;
+
+	}
+
+}

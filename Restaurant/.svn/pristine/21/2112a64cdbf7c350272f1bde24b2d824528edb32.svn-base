@@ -1,0 +1,215 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" errorPage="/error.jsp"%>
+<%@ page
+	import="zzu.minjie.dao.UserDao,zzu.minjie.bean.User"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>我的信息</title>
+	<!--fonts-->
+		<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.useso.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.useso.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+		
+	<!--//fonts-->
+			<link href="css/bootstrap.css" rel="stylesheet">
+			<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta
+	content="大学生求职,大学生就业,大学生招聘,IT人才,IT人才招聘,大学生名企招聘,,大学生找工作,IT名企招聘，IT行业招聘，IT企业快速入职"
+	name="keywords">
+<meta
+	content="锐聘专注于为企业提供高效的人力资源解决方案，同时面向IT类技术人才推出快速一站式免费就业服务。秉承QST青软实训人才服务理念，为数千家企业量身定做个性化、全程化的人才培养体系，同时帮助中高级人才铺设成功之路，为人才和企业架设起沟通之桥。"
+	name="description">
+</head>
+<body>
+<!-- header -->
+<div class="header">
+	<div class="container">
+		<div class="top-header">
+				<div class="header-left">
+					<p>新会员下单立享8折优惠！</p>
+				</div>
+				<div class="login-section">
+				<div class="head_user">
+					<%
+						if (session.getAttribute("SESSION_NICK") == null){
+					%>
+					<a href="login.jsp" target="_parent"><span class="type1">登录</span></a>
+					<a href="register.html" target="_parent"><span class="type2">注册</span></a>
+					<%
+						} else if(session.getAttribute("SESSION_NICK") != null) {
+					%>
+					<a href="UserInfoServlet?type=select">${sessionScope.SESSION_NICK}<%//=sessionStudent.getStudentNum()%></a>&nbsp;&nbsp;
+					<a href="#">退出</a>
+					<%
+						}
+					%>
+				</div>
+				</div>
+				<!-- start search-->
+				    <div class="search-box">
+					    <div id="sb-search" class="sb-search">
+							<form>
+								<input class="sb-search-input" placeholder="请输入内容" type="search" name="search" id="search">
+								<input class="sb-search-submit" type="submit" value="">
+								<span class="sb-icon-search"> </span>
+							</form>
+						</div>
+				    </div>
+					<!-- search-scripts -->
+					<script src="js/classie.js"></script>
+					<script src="js/uisearch.js"></script>
+						<script>
+							new UISearch( document.getElementById( 'sb-search' ) );
+						</script>
+				<!-- //search-scripts -->
+				<div class="header-right">
+						<div class="cart box_1">
+							<a href="checkout.html">
+								<h3> <span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span> 条)<img src="images/bag.png" alt=""></h3>
+							</a>	
+							<p><a href="javascript:;" class="simpleCart_empty">购物车</a></p>
+							<div class="clearfix"> </div>
+						</div>
+				</div>
+				<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+	<!-- 从request对象中获取一个JavaBean对象 -->
+	<jsp:useBean id="user" class="zzu.minjie.bean.User" scope="request"></jsp:useBean>
+		<div class="resume_con">
+		<!--tab设置-->
+
+		<!--主体部分-->
+		<div class="resume_main">
+	<!-- 个人信息页面开始 -->
+				<div class="resume_title">
+					<div style="float: middle">基本信息</div>
+
+
+					<div class="btn">
+						<a href="UserInfoServlet?type=updateSelect">修改</a>
+					</div>
+				</div>
+				<div class="all_resume">
+					<div class="table_style">
+						<table width="300" border="0" cellpadding="3" cellspacing="1"
+							bgcolor="#EEEEEE">
+							<tr>
+								<td width="110" align="right" bgcolor="#F8F8F8"
+									style="color: gray;">账号：</td>
+								<td bgcolor="#F8F8F8">${user.userId }</td>
+							</tr>
+						</table>
+						<div class="he"></div>
+						<table width="300" border="0" cellpadding="3" cellspacing="1"
+							bgcolor="#EEEEEE">
+							<tr>
+								<td width="110" align="right" bgcolor="#F8F8F8"
+									style="color: gray;">姓名：</td>
+								<td bgcolor="#F8F8F8">${user.name }</td>
+							</tr>
+						</table>
+						<div class="he"></div>
+						<table width="300" border="0" cellpadding="3" cellspacing="1"
+							bgcolor="#EEEEEE">
+							<tr>
+								<td width="110" align="right" bgcolor="#F8F8F8"
+									style="color: gray;">地址：</td>
+								<td bgcolor="#F8F8F8">${user.address }</td>
+							</tr>
+						</table>
+						<div class="he"></div>
+						<table width="300" border="0" cellpadding="3" cellspacing="1"
+							bgcolor="#EEEEEE">
+							<tr>
+								<td width="110" align="right" bgcolor="#F8F8F8"
+									style="color: gray;">电话：</td>
+								<td bgcolor="#F8F8F8">${user.phone }</td>
+							</tr>
+						</table>
+						<div class="he"></div>
+						<table width="300" border="0" cellpadding="3" cellspacing="1"
+							bgcolor="#EEEEEE">
+							<tr>
+								<td width="110" align="right" bgcolor="#F8F8F8"
+									style="color: gray;">性别：</td>
+								<td bgcolor="#F8F8F8">${user.gender }</td>
+							</tr>
+						</table>
+						<div class="he"></div>
+						<table width="300" border="0" cellpadding="3" cellspacing="1"
+							bgcolor="#EEEEEE">
+							<tr>
+								<td width="110" align="right" bgcolor="#F8F8F8"
+									style="color: gray;">生日：</td>
+								<td bgcolor="#F8F8F8">${user.birthday }</td>
+							</tr>
+						</table>
+						<div class="he"></div>
+						<table width="300" border="0" cellpadding="3" cellspacing="1"
+							bgcolor="#EEEEEE">
+							<tr>
+								<td width="110" align="right" bgcolor="#F8F8F8"
+									style="color: gray;">昵称：</td>
+								<td bgcolor="#F8F8F8">${user.nick }</td>
+							</tr>
+						</table>
+						
+					<div class="clear"></div>
+				</div>		
+			</div>
+<!-- footer-top -->
+<div class="footer-top">
+	<div class="container">
+		<div class="col-md-3 footer-grid">
+			<h3><a href="#">FAVORITES</a></h3>
+		</div>
+		<div class="col-md-3 footer-grid">
+			<h4>店内</h4>
+			<p>周一 - -周日<span>7 : 00 - 21 : 00</span></p>
+		</div>
+		<div class="col-md-3 footer-grid">
+			<h4>外卖</h4>
+			<p>周一 - -周日<span>7 : 00 - 21 : 00</span></p>
+		</div>
+		<div class="col-md-3 footer-grid">
+			<h4>地址</h4>
+			<ul>
+				<li class="list-one">郑州大学科学大道100号</li>
+				<li class="list-two"><a href="http://www.zzu.edu.cn/">zzu.zhuoyue.com</a></li>
+				<li class="list-three">+8 800 555 555 55</li>
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+</div>
+</div>
+<!-- smooth scrolling -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+		/*
+			var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear' 
+			};
+		*/								
+		$().UItoTop({ easingType: 'easeOutQuart' });
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+
+
+</body>
+</html>
+			
