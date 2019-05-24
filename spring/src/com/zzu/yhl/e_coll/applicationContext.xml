@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 
+		集合的注入都是给<property>添加子标签
+			数组：<array>
+			List：<list>
+			Set：<set>
+			Map：<map> ，map存放k/v 键值对，使用<entry>描述
+			Properties：<props>  <prop key=""></prop>  【】
+			
+		普通数据：<value>
+		引用数据：<ref>
+	-->
+
+	<bean id="collDataId" class="com.zzu.yhl.e_coll.CollData">
+		<property name="arrayData">
+			<array>
+				<value>YHL</value>
+				<value>CXY</value>
+				<value>ZRJ</value>
+				<value>WT</value>
+			</array>
+		</property>
+		<property name="listData">
+			<list>
+				<value>123</value>
+				<value>456</value>
+				<value>789</value>
+			</list>
+		</property>
+		<property name="setData">
+			<set>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+				<value>4</value>
+				<value>5</value>
+			</set>
+		</property>
+		<property name="mapData">
+			<map>
+				<entry key="jack" value="jack"></entry>
+				<entry>
+					<key>
+						<value>rose</value>
+					</key>
+					<value>rose</value>
+				</entry>
+			</map>
+		</property>
+		<property name="propsData">
+			<props>
+			<prop key="高富帅">1</prop>
+			<prop key="白富美">2</prop>
+			<prop key="屌丝">3</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

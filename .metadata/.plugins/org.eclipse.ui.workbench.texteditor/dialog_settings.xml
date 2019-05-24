@@ -6,24 +6,33 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="DBUTil"/>
+		<item key="selection" value="getTransHistory"/>
 		<list key="findhistory">
-			<item value="DBUtil"/>
-			<item value="validate"/>
-			<item value="RestaurantLogin"/>
-			<item value="followMap"/>
-			<item value="fset"/>
-			<item value="TransPackageContentDao"/>
-			<item value="print"/>
+			<item value="getTransHistory"/>
+			<item value="LRT"/>
+			<item value="Tool"/>
+			<item value="getUsersPackage"/>
+			<item value="11"/>
+			<item value="transHistory"/>
+			<item value="transHistoryDao"/>
+			<item value="是"/>
+			<item value="Trans"/>
+			<item value="appointTransPorter"/>
+			<item value="ap"/>
+			<item value="package"/>
+			<item value="getE"/>
+			<item value="getN"/>
+			<item value="getR"/>
 		</list>
 		<list key="replacehistory">
+			<item value="ID"/>
 			<item value="DBUTil"/>
 			<item value="Restaurant"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="996"/>
-		<item key="DIALOG_Y_ORIGIN" value="136"/>
+		<item key="DIALOG_X_ORIGIN" value="1026"/>
+		<item key="DIALOG_Y_ORIGIN" value="285"/>
 		<item key="DIALOG_WIDTH" value="300"/>
 		<item key="DIALOG_HEIGHT" value="410"/>
 		<item key="DIALOG_FONT_NAME" value="1|Microsoft YaHei UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI"/>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- setter方法注入 
+	普通数据： 
+		<property name="name" value="yhl"></property> 等效于 
+		<property name="age">
+			<value>123</value>
+		</property> 
+	引用数据
+	<property name="homeAddr" ref="homeAddr"></property> 等效于
+	
+	 -->
+	<bean id="personId" class="com.zzu.yhl.a_setter.Person">
+		<property name="name" value="yhl"></property>
+
+		<property name="age">
+			<value>123</value>
+		</property>
+		<property name="homeAddr" ref="homeAddr"></property>
+		<property name="companyAddr" >
+			<ref bean="companyAddr"></ref>
+		</property>
+	</bean>
+	<bean id="homeAddr" class="com.zzu.yhl.a_setter.Address">
+		<property name="addr" value="湖南"></property>
+		<property name="tel" value="911"></property>
+	</bean>
+	<bean id="companyAddr" class="com.zzu.yhl.a_setter.Address">
+		<property name="addr" value="北京八大胡同"></property>
+		<property name="tel" value="911"></property>
+	</bean>
+</beans>

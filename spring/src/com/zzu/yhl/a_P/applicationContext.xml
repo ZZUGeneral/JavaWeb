@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="personId" class="com.zzu.yhl.a_P.Person" p:name="joke" p:age="123"
+	p:homeAddr-ref="homeAddr" p:companyAddr-ref="companyAddr" >
+		
+	</bean>
+	<bean id="homeAddr" class="com.zzu.yhl.a_P.Address">
+		<property name="addr" value="湖南"></property>
+		<property name="tel" value="911"></property>
+	</bean>
+	<bean id="companyAddr" class="com.zzu.yhl.a_P.Address">
+		<property name="addr" value="北京八大胡同"></property>
+		<property name="tel" value="911"></property>
+	</bean>
+</beans>

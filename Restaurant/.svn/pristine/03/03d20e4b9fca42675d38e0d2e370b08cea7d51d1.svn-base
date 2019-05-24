@@ -1,0 +1,65 @@
+package zzu.minjie.servlet;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import zzu.minjie.bean.Order;
+import zzu.minjie.dao.OrderDao;
+
+/**
+ * Servlet implementation class HistoryOrderServlet
+ */
+@WebServlet("/HistoryOrderServlet")
+public class HistoryOrderServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    /**
+     * Default constructor. 
+     */
+    public HistoryOrderServlet() {
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		String userID = (String) request.getAttribute("userId");
+		OrderDao dao=new OrderDao();
+		
+		//获取所有订单的订单编号
+		List<String>orderList=dao.getOrderList(userID);
+		List<Float>sumPriceList=new ArrayList<Float>();
+		for(String orderNo: orderList) {
+			List<Order> foodList = dao.getFoodList(orderNo);
+			float sum = 0;
+			for(Order o : foodList) {
+				sum = sum + o.getPrice()*o.getNumber();
+			}
+			sumPriceList.add(sum);
+		}
+		request.setAttribute("OrderList",orderList);
+		
+		//每个订单的总价钱存入SumPriceList中
+		request.setAttribute("SumPriceList",sumPriceList);
+		request.getRequestDispatcher("/historyOrder.jsp").forward(request, response);
+	}
+
+}

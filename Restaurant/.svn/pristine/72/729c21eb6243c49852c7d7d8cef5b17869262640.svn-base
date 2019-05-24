@@ -1,0 +1,175 @@
+package zzu.minjie.dao;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
+
+import zzu.minjie.bean.Cart;
+import zzu.minjie.util.DBUTil;
+
+
+
+public class CartDao {
+	
+	//判断该用户CartID购物车内是否有东西
+	public boolean isExistCartID(String id) {
+		Connection conn = DBUTil.getConn();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM cat WHERE CartId=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next())
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUTil.closeJDBC(rs, pstmt, conn);
+		}
+		return false;
+	}
+	
+	/*得到所有符合条件的购物车物品*/
+	public List<Cart> selectCart(String column_name,String value) {
+		List<Cart> cartList=new ArrayList<Cart>();
+		Connection conn = DBUTil.getConn();
+		PreparedStatement pstmt = null;
+		String sql=null;
+		ResultSet rs=null;
+
+			sql="SELECT * FROM cart WHERE "+column_name+" ='"+value+"'";
+		try {
+			// 关闭自动提交
+			conn.setAutoCommit(false);
+			pstmt = conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				String cartId=rs.getString("CartId");
+				int foodId=rs.getInt("FoodId");
+				int number=rs.getInt("Number");
+				String foodName=rs.getString("FoodName");
+				float unitPrice=rs.getFloat("UnitPrice");
+				String image=rs.getString("Image");
+				Cart cart=new Cart(cartId,foodId,number,foodName,unitPrice,image);
+				cartList.add(cart);
+			}
+		} catch (SQLException e) {
+				e.printStackTrace();
+		} finally {
+			DBUTil.closeJDBC(rs, pstmt, conn);
+		}
+		return cartList;
+	}
+	
+	/*删除购物车某个物品*/
+	public void deleteCartItem(String cartId,int foodId) {
+		Connection conn = DBUTil.getConn();
+		PreparedStatement pstmt = null;
+		String sql="DELETE FROM cart WHERE CartId=? AND FoodId=?";
+		try {
+			conn.setAutoCommit(false);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, cartId);
+			pstmt.setInt(2, foodId);
+			pstmt.executeUpdate();
+			conn.commit();
+	    } catch (SQLException e) {
+		   try {
+			   // 事务回滚
+			   conn.rollback();
+		       } catch (SQLException e1) {
+			       e1.printStackTrace();
+		       }
+		   e.printStackTrace();
+	   } finally {
+		DBUTil.closeJDBC(null, pstmt, conn);
+	}
+	}
+	
+	//修改购物车物品数量
+	public void changeCartItemCount(String cartId,int foodId,int num) {
+		Connection conn = DBUTil.getConn();
+		PreparedStatement pstmt = null;
+		String sql="UPDATE cart SET Number=? WHERE CartId=? AND FoodId=?";
+		try {
+			conn.setAutoCommit(false);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,num);
+			pstmt.setString(2,cartId);
+			pstmt.setInt(3,foodId);
+			pstmt.executeUpdate();
+			conn.commit();
+		} catch (SQLException e) {
+				e.printStackTrace();
+		} finally {
+			DBUTil.closeJDBC(null, pstmt, conn);
+		}
+	}
+	
+	/*删除购物车*/
+	public void deleteCart(String cartId) {
+		Connection conn = DBUTil.getConn();
+		PreparedStatement pstmt = null;
+		String sql="DELETE FROM cart WHERE CartId=?";
+		try {
+			conn.setAutoCommit(false);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,cartId);
+			pstmt.executeUpdate();
+			conn.commit();
+	    } catch (SQLException e) {
+		   try {
+			   // 事务回滚
+			   conn.rollback();
+		       } catch (SQLException e1) {
+			       e1.printStackTrace();
+		       }
+		   e.printStackTrace();
+	   } finally {
+		DBUTil.closeJDBC(null, pstmt, conn);
+	}
+	}
+	
+	
+	/*购物车添加到订单*/
+	public void submitCart(List<Cart> cartList) throws IOException {
+		Connection conn = DBUTil.getConn();
+		PreparedStatement pstmt = null;
+		Timestamp d=new Timestamp(System.currentTimeMillis());
+		String sql="INSERT INTO orders VALUES(?,?,?,?,?,?)";
+		try {
+			conn.setAutoCommit(false);
+			for(int i=0;i<cartList.size();i++) {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,cartList.get(i).getCartId());
+			pstmt.setTimestamp(2, d);
+			pstmt.setInt(3,cartList.get(i).getFoodId());
+			pstmt.setInt(4,cartList.get(i).getNumber());
+			pstmt.setFloat(5,cartList.get(i).getUnitPrice()*cartList.get(i).getNumber());
+			pstmt.setInt(6,1);
+			
+			pstmt.executeUpdate();
+			conn.commit();
+			}
+		    } catch (SQLException e) {
+			   try {
+				   // 事务回滚
+				   conn.rollback();
+			       } catch (SQLException e1) {
+				       e1.printStackTrace();
+			       }
+			   e.printStackTrace();
+		   } finally {
+			DBUTil.closeJDBC(null, pstmt, conn);
+		}
+	}
+
+}

@@ -1,0 +1,148 @@
+package ts.serviceInterface;
+
+import java.util.List;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.hibernate.dialect.CUBRIDDialect;
+import ts.model.CustomerInfo;
+import ts.model.ExpressSheet;
+import ts.model.TransPackage;
+import ts.model.UserInfo;
+import ts.model.UsersPackage;
+
+@Path("/Domain")	//业务操作
+public interface IDomainService {
+    //快件操作访问接口=======================================================================
+    @GET
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    // /{����(���ݿ�)}/{like/eq(ģ��/��ȷ)/{����ֵ}
+    @Path("/getExpressList/{Property}/{Restrictions}/{Value}") 
+	public List<ExpressSheet> getExpressList(@PathParam("Property")String property, 
+			@PathParam("Restrictions")String restrictions, @PathParam("Value")String value);
+    
+    @GET
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/getExpressListBySndTel/{Tel}") 
+	public List<ExpressSheet> getExpressListBySndTel(@PathParam("Tel") String Tel);
+    
+    @GET
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/getExpressListByRecTel/{Tel}") 
+	public List<ExpressSheet> getExpressListByRecTel(@PathParam("Tel") String Tel);
+
+    @GET
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/getExpressListInPackage/PackageId/{PackageId}") 
+	public List<ExpressSheet> getExpressListInPackage(@PathParam("PackageId")String packageId);
+
+    @GET
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/getExpressSheet/{id}") 
+	public Response getExpressSheet(@PathParam("id")String id);
+
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/newExpressSheet/id/{id}/uid/{uid}") 
+	public Response newExpressSheet(@PathParam("id")String id, @PathParam("uid")int uid);
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/saveExpressSheet") 
+	public Response saveExpressSheet(ExpressSheet obj);
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/createExpressSheet") 
+	public Response createExpressSheet(ExpressSheet expressSheet);
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/updateExpressSheet/{id}") 
+	public Response updateExpressSheet(@PathParam("id")String id,ExpressSheet obj);
+    
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/receiveExpressSheetId/id/{id}/uid/{uid}") 
+	public Response ReceiveExpressSheetId(@PathParam("id")String id, @PathParam("uid")int uid);
+    
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/dispatchExpressSheetId/id/{id}/uid/{uid}") 
+	public Response DispatchExpressSheet(@PathParam("id")String id, @PathParam("uid")int uid);
+    
+    
+    
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/deliveryExpressSheetId/id/{id}/uid/{uid}") 
+	public Response DeliveryExpressSheetId(@PathParam("id")String id, @PathParam("uid")int uid);
+
+    //包裹操作访问接口=======================================================================
+    @GET
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/getTransPackageList/{Property}/{Restrictions}/{Value}") 
+	public List<TransPackage> getTransPackageList(@PathParam("Property")String property, @PathParam("Restrictions")String restrictions, @PathParam("Value")String value);
+
+    @GET
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/getTransPackage/{id}") 
+	public Response getTransPackage(@PathParam("id")String id);
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/newTransPackage/{uid}") 
+    public Response newTransPackage(@PathParam("uid")int uid,TransPackage obj);
+    
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/openTransPackage/{uid}/{id}") 
+    public int openTransPackage(@PathParam("uid")int uid,@PathParam("id")String id);
+    
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/packTransPackage/{transPackageID}/{expressSheetID}") 
+    public Response packTransPackage(@PathParam("transPackageID")String transPackageID,
+    		@PathParam("expressSheetID")String expressSheetID);
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/saveTransPackage") 
+	public Response saveTransPackage(TransPackage obj);
+
+    @GET
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/doLogin/{uid}/{pwd}")
+    public Response doLogin(@PathParam("uid") int uid, @PathParam("pwd") String pwd);
+    
+    @GET
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/getUserPackage/{userUID}") 
+	public List<TransPackage> getUsersPackage(@PathParam("userUID")int userUID);
+    
+    @GET
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    // getUserList/{属性}/{like/eq}/{值}}
+    @Path("/getUserList/{Property}/{Restrictions}/{Value}") 
+	public List<UserInfo> getUserList(@PathParam("Property")String property, 
+			@PathParam("Restrictions")String restrictions, @PathParam("Value")String value);
+
+    
+   
+    
+
+}

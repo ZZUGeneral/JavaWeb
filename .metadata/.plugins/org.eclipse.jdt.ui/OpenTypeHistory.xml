@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy/>
+<typeInfoHistroy>
+<typeInfo handle="=spring/E:\/Java\/jre\/lib\/rt.jar&lt;java.lang(Object.class[Object" modifiers="33" timestamp="1540779398111"/>
+<typeInfo handle="=spring/F:\/JavaWeb\/spring\/WebContent\/WEB-INF\/lib\/spring-context-5.1.7.RELEASE.jar&lt;org.springframework.context.support(PostProcessorRegistrationDelegate$BeanPostProcessorChecker.class[BeanPostProcessorChecker" modifiers="26" timestamp="1558353613021"/>
+<typeInfo handle="=spring/F:\/JavaWeb\/spring\/WebContent\/WEB-INF\/lib\/spring-beans-5.1.7.RELEASE.jar&lt;org.springframework.beans.factory.config(BeanPostProcessor.class[BeanPostProcessor" modifiers="1537" timestamp="1558353613016"/>
+</typeInfoHistroy>
