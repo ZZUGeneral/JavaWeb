@@ -9,6 +9,9 @@
 		<item key="selection" value="getTransHistory"/>
 		<list key="findhistory">
 			<item value="getTransHistory"/>
+			<item value="getHistory"/>
+			<item value="getHestory"/>
+			<item value="&lt;url-pattern&gt;"/>
 			<item value="LRT"/>
 			<item value="Tool"/>
 			<item value="getUsersPackage"/>
@@ -20,9 +23,6 @@
 			<item value="appointTransPorter"/>
 			<item value="ap"/>
 			<item value="package"/>
-			<item value="getE"/>
-			<item value="getN"/>
-			<item value="getR"/>
 		</list>
 		<list key="replacehistory">
 			<item value="ID"/>
