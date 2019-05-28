@@ -6,8 +6,13 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="getTransHistory"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="Hello"/>
+			<item value="loadExpres"/>
+			<item value="openTransPackage"/>
+			<item value="inpackage"/>
+			<item value="express"/>
 			<item value="getTransHistory"/>
 			<item value="getHistory"/>
 			<item value="getHestory"/>
@@ -18,11 +23,6 @@
 			<item value="11"/>
 			<item value="transHistory"/>
 			<item value="transHistoryDao"/>
-			<item value="是"/>
-			<item value="Trans"/>
-			<item value="appointTransPorter"/>
-			<item value="ap"/>
-			<item value="package"/>
 		</list>
 		<list key="replacehistory">
 			<item value="ID"/>
