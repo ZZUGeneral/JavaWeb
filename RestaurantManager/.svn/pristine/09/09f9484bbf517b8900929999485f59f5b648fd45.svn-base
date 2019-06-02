@@ -1,0 +1,56 @@
+#background {
+	background-color: #ECF1F9;
+}
+
+#menu ul {
+	text-align: center;
+	list-style-type: none;
+}
+
+#menu {
+	width: 100%;
+}
+
+.fmenu {
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+
+.menus {
+	background-image: url(../img/menu_bg1.gif);
+	margin: auto;
+	width: 182px;
+	height: 26px;
+	line-height: 26px;
+}
+
+.menus:hover {
+	background-image: url(../img/menu_bg2.gif);
+	margin: auto;
+	width: 182px;
+	height: 27px;
+	line-height: 27px;
+}
+
+.menupic {
+	margin: auto;
+	margin-bottom: 6px;
+	width: 182px;
+	height: 5px;
+}
+
+a {
+	font-family: "微软雅黑";
+	font-size: 12px;
+	text-decoration: none;
+	color: black;
+}
+
+.menus a:hover {
+	font-family: "微软雅黑";
+	color: green;
+	font-weight: 700;
+	font-size: 12px;
+	text-decoration: none;
+	color: black;
+}

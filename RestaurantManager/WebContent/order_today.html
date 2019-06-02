@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/all.css" />
+		<link rel="stylesheet" type="text/css" href="css/context.css" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	</head>
+
+	<body id="background">
+		<div id="body">
+			<!--
+            	作者：luchao7285@163.com
+            	时间：2017-03-11
+            	描述：设置页头
+            -->
+			<div id="top">
+				<div>
+					<img src="img/left-top-right.gif" />
+				</div>
+				<div id="title">
+					<p>类别信息</p>
+				</div>
+				<div id="top_body">
+					<img src="img/content-bg.gif" height="31px" />
+				</div>
+				<div>
+					<img src="img/nav-right-bg.gif" />
+				</div>
+			</div>
+			<!--
+            	作者：luchao7285@163.com
+            	时间：2017-03-11
+            	描述：设置页中
+            -->
+			<div id="middle">
+				<br/>
+				<br/>
+				<table align="center" border="1" cellspacing="0" cellpadding="0">
+				 <thead>
+					<tr class="head">
+						<td colspan="4">本日销售额统计</td>
+					</tr>
+					<tr class="head">
+		
+						<td>菜品名称</td>
+						<td>订购数量</td>
+						<td>单价</td>
+						<td>合计</td>
+					</tr>
+					</thead>
+					<tbody>
+					</tbody>
+					<tfoot>
+					<tr>
+						<td colspan="4">合计：<span id="num"></span>份 <span id="price"></span>元</td>
+					</tr>
+					<tr class="head">
+						<td colspan="12">共1页
+							<a href="#">[首页]</a> 1 2 3
+							<a href="#">[尾页]</a>
+						</td>
+					</tr>
+					</tfoot>
+				</table>
+				<br/>
+				<br/>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+		$.ajax({
+			 type: "POST",
+            url: "TodayOrderServlet",
+            data:{
+            	"type":"statistic"
+            },
+            dataType: "json",
+	         success:function(data){
+	        	 $("tbody").html("");
+	 
+	        	 var result=eval(data);
+	              var num=0;
+	              var price=0;
+	        	 for(var i=0;i<result.length;i++)
+	        	 {
+	        		 num+=result[i].totalNum;
+	        		 price+=result[i].totalNum*result[i].unitPrice;
+	        		 $("tbody").append("<tr><td>"+result[i].name+"</td><td>"+result[i].totalNum+"</td><td>"+result[i].unitPrice+"</td><td>"+result[i].totalNum*result[i].unitPrice+"</td></tr>");
+	         
+	             }
+	        	 $("#num").text(num);
+	        	 $("#price").text(price);
+	        	
+	         },
+	         error:function(data){
+	        
+	        
+	        	 alert("结算失败！");
+	         }
+	     });
+		
+		</script>
+	</body>
+
+</html>

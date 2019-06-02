@@ -1,0 +1,24 @@
+#background {
+	background-image: url(../img/top-right.gif);
+	height: 64px;
+}
+
+#background div {
+	float: left;
+}
+
+#title {
+	margin-left: 20%;
+	margin-top: 15px;
+	color: white;
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+
+#title marquee {
+	width: 400px;
+}
+
+#out {
+	margin-left: 30%;
+}

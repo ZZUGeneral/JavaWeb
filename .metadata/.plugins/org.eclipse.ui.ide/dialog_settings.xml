@@ -1,49 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
-		<item value="F:\JavaWeb\CxfHibernateZRJ"/>
-		<item value="F:\JavaWeb\RestoRegister"/>
-		<item value="F:\JavaWeb\TestCxfHibernate"/>
-		<item value="F:\JavaWeb\Thread"/>
 		<item value="F:\JavaWeb"/>
 	</list>
-	<section name="CleanDialogSettings">
-		<item key="DIALOG_X_ORIGIN" value="433"/>
-		<item key="DIALOG_Y_ORIGIN" value="86"/>
-		<item key="DIALOG_WIDTH" value="500"/>
-		<item key="DIALOG_HEIGHT" value="483"/>
-		<item key="TOGGLE_SELECTED" value="true"/>
-		<item key="BUILD_NOW" value="true"/>
-		<item key="BUILD_ALL" value="false"/>
-	</section>
-	<section name="ExternalProjectImportWizard">
-		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
-		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="false"/>
-		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
-		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
-			<item value="F:\JavaWeb\CxfHibernateZRJ"/>
-			<item value="F:\JavaWeb"/>
-		</list>
-		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
-			<item value=""/>
-		</list>
-	</section>
-	<section name="NewWizardAction">
-		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jst.servlet.ui.project.facet.WebProjectWizard"/>
-		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.eclipse.jdt.ui.java"/>
-			<item value="org.tigris.subversion.subclipse.ui.svn"/>
-			<item value="org.eclipse.wst.web.ui"/>
-		</list>
-	</section>
-	<section name="BasicNewProjectResourceWizard">
-	</section>
-	<section name="ChooseWorkspaceDialogSettings">
-		<item key="DIALOG_X_ORIGIN" value="79"/>
-		<item key="DIALOG_Y_ORIGIN" value="147"/>
-	</section>
-	<section name="WORKBENCH_SETTINGS">
-		<list key="ENABLED_TRANSFERS">
-		</list>
-	</section>
 </section>

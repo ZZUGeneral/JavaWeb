@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/all.css" />
+		<link rel="stylesheet" type="text/css" href="css/context.css" />
+		<title></title>
+	</head>
+
+	<body id="background">
+		<div id="body">
+			<!--
+            	作者：luchao7285@163.com
+            	时间：2017-03-11
+            	描述：设置页头
+            -->
+			<div id="top">
+				<div>
+					<img src="img/left-top-right.gif" />
+				</div>
+				<div id="title">
+					<p>类别信息</p>
+				</div>
+				<div id="top_body">
+					<img src="img/content-bg.gif" height="31px" />
+				</div>
+				<div>
+					<img src="img/nav-right-bg.gif" />
+				</div>
+			</div>
+			<!--
+            	作者：luchao7285@163.com
+            	时间：2017-03-11
+            	描述：设置页中
+            -->
+			<div id="middle">
+				<br/>
+				<br/>
+				<table align="center" border="1" cellspacing="0" cellpadding="0">
+					<tr class="head">
+						<td colspan="11">菜单信息列表</td>
+					</tr>
+					<tr class="head">
+						<td>类别ID</td>
+						<td>类别名称</td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>蒸菜</td>
+						<td>
+							<a href="">修改</a>
+						</td>
+						<td>
+							<a href="">刪除</a>
+						</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>蒸菜</td>
+						<td>
+							<a href="">修改</a>
+						</td>
+						<td>
+							<a href="">刪除</a>
+						</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>蒸菜</td>
+						<td>
+							<a href="">修改</a>
+						</td>
+						<td>
+							<a href="">刪除</a>
+						</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>蒸菜</td>
+						<td>
+							<a href="">修改</a>
+						</td>
+						<td>
+							<a href="">刪除</a>
+						</td>
+					</tr>
+					<tr class="head">
+						<td colspan="11">共${pagetypes.pageSum }页
+							<a href="../manage/listTypes?pageNumber=1">[首页]</a>
+							<c:forEach var="pageNum" begin="1" end="${pagetypes.pageSum }">
+								<a href="../manage/listTypes?pageNumber=${pageNum }">${pageNum }</a>
+							</c:forEach>
+							<a href="../manage/listTypes?pageNumber=${pagetypes.pageSum }">[尾页]</a>
+						</td>
+					</tr>
+				</table>
+				<br/>
+				<br/>
+			</div>
+		</div>
+	</body>
+
+</html>

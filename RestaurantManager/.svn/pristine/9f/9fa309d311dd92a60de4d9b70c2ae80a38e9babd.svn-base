@@ -1,0 +1,16 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background-color: #1D3647;
+}
+
+frameset {
+	border: 0px;
+}
+
+frame {
+	border: 0px;
+}

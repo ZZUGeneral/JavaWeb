@@ -1,0 +1,110 @@
+body{
+	width: 1919px;
+	height: 966px;
+}
+#body_top {
+	background-image: url(..manage/img/login-top-bg.gif);
+	width: auto;
+	height: 41px;
+}
+
+#body_middle_context {
+	float: left;
+	background-image: url(../img/login-content-bg.gif);
+	background-size: 100% 100%;
+	width: 50%;
+	height: 532px;
+	border-top: #1D3647 1px solid;
+}
+
+#body_bottom {
+	background-image: url(../img/buttom-copy-bg.gif);
+	width: 100%;
+	background-size: 100% 100%;
+	height: 54px;
+	margin-top: 500px;
+	text-align: center;
+	color: gainsboro;
+	font-family: "微软雅黑";
+	font-size: small;
+}
+
+#logo {
+	margin-top: 130px;
+	margin-left: 500px;
+}
+
+#contacts {
+	margin-top: 50px;
+	margin-left: 500px;
+	font-family: "微软雅黑";
+	font-size: 10px;
+	color: grey;
+}
+
+#contacts a {
+	font-family: "微软雅黑";
+	font-size: 10px;
+	color: grey;
+	text-decoration: none;
+}
+
+#contacts a:hover {
+	font-family: "微软雅黑";
+	font-size: 10px;
+	color: coral;
+	text-decoration: underline;
+}
+
+#instruction {
+	margin-left: 200px;
+	margin-top: 50px;
+}
+
+#instruction img {
+	margin-left: 200px;
+}
+
+#instruction a {
+	font-family: "微软雅黑";
+	font-size: 18px;
+	text-decoration: none;
+	color: grey;
+}
+
+#instruction a:hover {
+	font-family: "微软雅黑";
+	font-size: 18px;
+	color: coral;
+	text-decoration: underline;
+}
+
+#login {
+	margin-top: 130px;
+	margin-left: 150px;
+	color: black;
+	line-height: 40px;
+	font-family: "微软雅黑";
+	font-size: 14px;
+}
+
+.left {
+	text-align: left;
+	width: 100px;
+}
+
+.right input {
+	border-width: 0px;
+	border: 1px solid black;
+	border-radius: calc(3px);
+}
+
+#submit input {
+	width: 60px;
+	height: 20px;
+}
+
+#imgwel {
+	margin-left: 70%;
+	margin-top: 5%;
+}
