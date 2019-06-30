@@ -11,16 +11,14 @@ import java.io.IOException;
  * Copyright: Copyright (c) 2019 LanRu-Caifu
  * 
  * @ClassName: SubwayLoader.java
- * @Description:载入器类 方法： 1.
- *                   接受file产生新的Subway实例(使用Subway里的所有功能，由站点与地铁线路的文本文件成关键地铁)
- * 
+ * @Description: 加载类：从文件中加载地铁线路网
  *
  * @version: v1.0.0
  * @author: YHL
- * @date: 2019年6月4日 上午8:01:48
+ * @date: 2019年6月20日 下午9:38:09
  *
  *        Modification History: Date Author Version Description
- *        ---------------------------------------------------------* 2019年6月4日
+ *        ---------------------------------------------------------* 2019年6月20日
  *        YHL v1.0.0 修改原因
  */
 public class SubwayLoader {

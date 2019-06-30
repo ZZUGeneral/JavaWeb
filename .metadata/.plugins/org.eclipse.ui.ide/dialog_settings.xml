@@ -7,6 +7,7 @@
 		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.tigris.subversion.subclipse.ui.wizards.CheckoutWizard"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
 			<item value="org.tigris.subversion.subclipse.ui.svn"/>
+			<item value="org.eclipse.wst.web.ui"/>
 		</list>
 	</section>
 	<section name="CleanDialogSettings">

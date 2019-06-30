@@ -6,28 +6,32 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * 
+ * Copyright: Copyright (c) 2019 LanRu-Caifu
+ * 
+ * @ClassName: Subway.java
+ * @Description:地铁类
+ *
+ * @version: v1.0.0
+ * @author: YHL
+ * @date: 2019年6月20日 下午9:37:49
+ *
+ *        Modification History: Date Author Version Description
+ *        ---------------------------------------------------------* 2019年6月20日
+ *        YHL v1.0.0 修改原因
+ */
 public class Subway {
 
 	private List stations;
 	private List connections;
 	private Map network;
 
-	/**
-	 * 
-	* @Function: Subway.java
-	* @Description: 璇ュ嚱鏁扮殑鍔熻兘鎻忚堪
-	*
-	* @version: v1.0.0
-	* @author: YHL
-	* @date: 2019骞�6鏈�11鏃� 涓嬪崍3:33:14
-	 */
 	public Subway() {
 		this.stations = new LinkedList();
 		this.connections = new LinkedList();
 		this.network = new HashMap();
 	}
-
 
 	public void addStation(String stationName) {
 		if (!this.hasStation(stationName)) {
@@ -36,41 +40,11 @@ public class Subway {
 		}
 	}
 
-	/**
-	 * 
-	 * @Function: hasStation
-	 * @Description: 锟矫猴拷锟斤拷锟侥癸拷锟斤拷锟斤拷锟斤拷
-	 * 
-	 * @param stationName
-	 * @return
-	 * @return锟斤拷boolean
-	 * @throws锟斤拷锟届常锟斤拷锟斤拷
-	 *
-	 * @author: YHL
-	 * @date: 2019锟斤拷6锟斤拷4锟斤拷 锟斤拷锟斤拷10:07:11
-	 *
-	 */
 	public boolean hasStation(String stationName) {
 		return stations.contains(new Station(stationName));
 	}
 
-	/**
-	 * 
-	 * @Function: Subway.java
-	 * @Description: 锟斤拷锟斤拷锟斤拷锟�
-	 *
-	 * @param:String station1Name, String station2Name, String lineName
-	 * @return锟斤拷锟斤拷锟截斤拷锟斤拷锟斤拷锟�
-	 * @throws锟斤拷锟斤拷锟斤拷锟斤拷锟绞憋拷锟接︼拷锟斤拷锟斤拷锟秸撅拷悴伙拷锟斤拷锟�
-	 *
-	 * @version: v1.0.0
-	 * @author: YHL
-	 * @date: 2019锟斤拷6锟斤拷4锟斤拷 锟斤拷锟斤拷8:39:30
-	 *
-	 *        Modification History: Date Author Version Description
-	 *        ---------------------------------------------------------* 2019锟斤拷6锟斤拷4锟斤拷
-	 *        YHL v1.0.0 锟睫革拷原锟斤拷
-	 */
+	
 	public void addConnection(String station1Name, String station2Name, String lineName) {
 		if (this.hasStation(station1Name) && this.hasStation(station2Name)) {
 			Station station1 = new Station(station1Name);
@@ -87,7 +61,6 @@ public class Subway {
 
 	}
 
-// 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷站锟斤拷偷锟斤拷锟斤拷锟铰凤拷锟斤拷锟斤拷锟绞憋拷锟斤拷囟锟斤拷锟斤拷锟斤拷欠锟斤拷锟斤拷
 	public boolean hasConnection(String station1Name, String station2Name, String lineName) {
 		Station station1 = new Station(station1Name);
 		Station station2 = new Station(station2Name);
@@ -194,5 +167,5 @@ public class Subway {
 	public String toString() {
 		return "Subway [stations=" + stations + ", connections=" + connections + ", network=" + network + "]";
 	}
-	
+
 }

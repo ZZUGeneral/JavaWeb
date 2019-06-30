@@ -29,6 +29,7 @@ public class SubwayFrame {
 		TextArea area = new TextArea();
 		area.setSize(50, 50);
 		area.setVisible(true);
+		area.setVisible(true);
 		frame.add(area);
 		button.addActionListener(new ActionListener() {
 			@Override

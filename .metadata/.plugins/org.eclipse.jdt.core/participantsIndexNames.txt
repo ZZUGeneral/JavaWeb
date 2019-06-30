@@ -3,6 +3,8 @@ F:\JavaWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3958271033.inde
 \RestaurantManager\src
 F:\JavaWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1692082976.index
 \spring_tx6\src
+F:\JavaWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\135789744.index
+\Manager\src
 F:\JavaWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3148781807.index
 \QST_ITOFFER\src
 F:\JavaWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1409977124.index

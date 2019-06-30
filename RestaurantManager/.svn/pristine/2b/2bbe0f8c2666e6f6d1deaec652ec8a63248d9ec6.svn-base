@@ -1,0 +1,174 @@
+package com.zzu.minjie.servlet;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.zzu.minjie.bean.DishStyle;
+import com.zzu.minjie.bean.Food;
+import com.zzu.minjie.dao.DishStyleDao;
+import com.zzu.minjie.dao.FoodDao;
+
+
+@WebServlet("/DishesManageServlet")
+public class DishesManageServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 设置请求和响应编码
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		// 设置请求和响应编码
+		String TYPES = request.getParameter("TYPES");				
+		FoodDao foodDao = new FoodDao();
+		DishStyleDao dishStyleDao = new DishStyleDao();
+		List<DishStyle> dishStyleList = dishStyleDao.getDishStyles();		
+		HttpSession session = request.getSession();
+		session.setAttribute("dishStyleList", dishStyleList);	//查询菜系
+		if ("dishesSave".equals(TYPES)) { 						
+			
+			String name = request.getParameter("name");
+			String material = request.getParameter("recipe");
+			String price = request.getParameter("price");
+			String memberPrice = request.getParameter("memberPrice");
+			String foodExplain = request.getParameter("brief");
+			String type = request.getParameter("type");
+			
+			Food food = new Food();
+			food.setName(name);
+			food.setMaterial(material);
+			food.setPrice(Float.parseFloat(price));
+			food.setMemberPrice(Float.parseFloat(memberPrice));
+			food.setFoodExplain(foodExplain);
+			food.setType(type);
+
+		
+			//获取图片的绝对路径
+			String imagePath = request.getParameter("imgpath");		
+			
+			//获取图片名
+			File tempFile =new File( imagePath.trim());  
+			String fileName = tempFile.getName();
+			food.setImage(fileName);
+			String savePath1 = this.getServletContext().getRealPath("/picture");		
+            String savePath2 = new String("F:\\JavaWeb\\RestaurantManager\\WebContent\\picture");	//本地项目路径
+			
+            //读取图片
+			FileInputStream in = new FileInputStream(imagePath);	
+			FileOutputStream os1 = new FileOutputStream(new File(savePath1 + "\\" + fileName)); 	
+            FileOutputStream os2 = new FileOutputStream(new File(savePath2 + "\\" + fileName)); 
+
+			byte[] buffer = new byte[1024];
+			int len = 0;
+			while((len = in.read(buffer))!=-1) {
+				os1.write(buffer,0,len);
+                os2.write(buffer,0,len);
+			}	
+			os1.close();
+            os2.close();
+
+			try {
+				foodDao.save(food);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+
+			request.setAttribute("food", food);
+			request.getRequestDispatcher("foodInfo.jsp").forward(request, response);	
+			
+		} else if ("dishesList".equals(TYPES)) {  	//获取菜品列表
+			
+			List<Food> allFood = foodDao.selectAllFood();
+
+			request.setAttribute("allFood", allFood);
+			request.getRequestDispatcher("dishe_list.jsp").forward(request, response);
+			
+		}else if ("dishesDel".equals(TYPES)) {		//删除菜品
+			
+			String foodId = request.getParameter("foodid");		
+			foodDao.delete(Integer.parseInt(foodId));
+			
+
+			//request.getRequestDispatcher("dishe_list.jsp").forward(request, response);				
+		}else if ("dishesUpdate".equals(TYPES)) {			//更新菜品
+			String foodId = request.getParameter("foodId");	
+			
+			Food food = foodDao.searchById(Integer.parseInt(foodId));
+			
+			request.setAttribute("food", food);
+			request.setAttribute("foodId", foodId);
+			request.getRequestDispatcher("foodDetail.jsp").forward(request, response);				
+		}else if ("dishesUpdateNext".equals(TYPES)) {		//更新菜品之后动作
+			
+			String foodId = request.getParameter("foodId");	
+			String name = request.getParameter("name");
+			String material = request.getParameter("recipe");
+			String price = request.getParameter("price");
+			String memberPrice = request.getParameter("memberPrice");
+			String foodExplain = request.getParameter("brief");
+			String type = request.getParameter("type");
+			
+			Food food = new Food();
+			food.setFoodId(Integer.parseInt(foodId));
+			food.setName(name);
+			food.setMaterial(material);
+			food.setPrice(Float.parseFloat(price));
+			food.setMemberPrice(Float.parseFloat(memberPrice));
+			food.setFoodExplain(foodExplain);
+			food.setType(type);
+
+		
+			//获取图片的绝对路径
+			String imagePath = request.getParameter("imgpath");	
+			
+			//获取图片名
+			File tempFile =new File( imagePath.trim());  
+			String fileName = tempFile.getName();
+			food.setImage(fileName);
+           
+
+            String savePath1 = this.getServletContext().getRealPath("/picture");		
+            String savePath2 = new String("F:\\JavaWeb\\RestaurantManager\\WebContent\\picture");	//本地项目路径
+			
+            
+            //读取图片
+			FileInputStream in = new FileInputStream(imagePath);		
+			FileOutputStream os1 = new FileOutputStream(new File(savePath1 + "\\" + fileName)); 	
+            FileOutputStream os2 = new FileOutputStream(new File(savePath2 + "\\" + fileName)); 
+
+			byte[] buffer = new byte[1024];
+			int len = 0;
+			while((len = in.read(buffer))!=-1) {
+				os1.write(buffer,0,len);
+os2.write(buffer,0,len);
+			}	
+			os1.close();
+os2.close();
+
+			try {
+				foodDao.update(food.getFoodId(), food);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("food", food);
+			request.getRequestDispatcher("foodInfo.jsp").forward(request, response);	
+									
+		}									
+		
+	}
+
+}

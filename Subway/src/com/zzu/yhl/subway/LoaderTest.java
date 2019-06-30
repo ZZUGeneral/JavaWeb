@@ -8,8 +8,10 @@ public class LoaderTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
+			File f = new File(".");
+			System.out.println(f.getAbsolutePath());
 			SubwayLoader loader = new SubwayLoader();
-			Subway objectville = loader.loadFromFile(new File("C:\\Users\\YHL\\Desktop\\test.txt"));
+			Subway objectville = loader.loadFromFile(new File(".\\test.txt"));
 			System.out.println("Testing stations...");
 			if (objectville.hasStation("DRY Drive") && objectville.hasStation("Weather-O-Rama, Inc.")
 					&& objectville.hasStation("Boards 'R' Us")) {

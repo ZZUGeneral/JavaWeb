@@ -1,0 +1,61 @@
+package com.zzu.minjie.bean;
+/*
+ * 菜系实体类
+ */
+public class DishStyle {
+	private int dishId;       //编号
+	private String dishName;  //菜系名称
+	private String dishExplain;//菜系描述
+	private String opt;       //菜系选项
+	private String Image;     //菜系图片
+	public DishStyle() {
+		
+	}
+	public DishStyle(int dishId,String dishName,String dishExplain,String opt,String Image) {
+		super();
+		this.dishId = dishId;
+		this.dishName = dishName;
+		this.dishExplain = dishExplain;
+		this.opt = opt;
+		this.Image = Image;
+	}
+	public int getDishId() {
+		return dishId;
+	}
+	public void setDishId(int dishId) {
+		this.dishId = dishId;
+	}
+	public String getDishName() {
+		return dishName;
+	}
+	public void setDishName(String dishName) {
+		this.dishName = dishName;
+	}
+	public String getDishExplain() {
+		return dishExplain;
+	}
+	public void setDishExplain(String dishExplain) {
+		this.dishExplain = dishExplain;
+	}
+	public String getOpt() {
+		return opt;
+	}
+	public void setOpt(String opt) {
+		this.opt = opt;
+	}
+	public String getImage() {
+		return Image;
+	}
+	public void setImage(String image) {
+		Image = image;
+	}
+
+	@Override
+	public String toString() {
+		return "DishStyle [dishId=" + dishId + ", dishName=" + dishName + ", dishExplain=" + dishExplain + ", opt="
+				+ opt + ", Image=" + Image + "]";
+	}
+	
+	
+	
+}
